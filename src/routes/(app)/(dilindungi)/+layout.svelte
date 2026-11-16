@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { auth } from '#lib/auth/session.svelte.js';
+	import { courses } from '#lib/courses/store.svelte.js';
 	import { learners } from '#lib/learners/store.svelte.js';
 	import Spinner from '#lib/ui/Spinner.svelte';
 	import type { LayoutProps } from './$types';
@@ -14,6 +15,7 @@
 	$effect(() => {
 		if (auth.status === 'signed-out' || auth.status === 'unconfigured') {
 			learners.reset();
+			courses.reset();
 			void goto(resolve('/(app)/masuk'), { replace: true });
 		}
 	});

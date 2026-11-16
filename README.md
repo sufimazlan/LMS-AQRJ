@@ -3,9 +3,9 @@
 Learning app for **Akademi Quran Raudhatul Jannah**: Kelas Mengaji Al-Quran with short
 video lessons, quizzes and recitation review by a teacher. It installs on a phone as a PWA.
 
-**Status: pilot foundations.** Working now: home page (ustazah, syllabus, plans),
-sign-in with Google or an email link, learner profiles for a family, the app shell and
-offline page. Lessons, tasmik and payments come in the next milestones
+**Status: pilot.** Working now: home page (ustazah, syllabus, plans), sign-in with
+Google or an email link, learner profiles for a family, levels and lessons with video,
+quizzes and progress, and an offline page. Admin screens, payments and tasmik come next
 (see [docs/ROADMAP.md](docs/ROADMAP.md)).
 
 ## Run it
