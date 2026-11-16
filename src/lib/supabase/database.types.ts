@@ -9,6 +9,7 @@
 
 export type UserRole = 'admin' | 'guru';
 export type Gender = 'L' | 'P';
+export type PlanId = 'percuma' | 'asas' | 'penuh';
 export type ConsentKind = 'privacy_notice' | 'guardian_consent' | 'recording';
 
 type AccountRow = {
@@ -46,6 +47,54 @@ type ConsentRow = {
 	accepted_at: string;
 };
 
+type LevelRow = {
+	id: string;
+	number: number;
+	title: string;
+	summary: string;
+	plan: PlanId;
+	published: boolean;
+	created_at: string;
+};
+
+type LessonRow = {
+	id: string;
+	level_id: string;
+	position: number;
+	title: string;
+	summary: string;
+	duration_seconds: number | null;
+	published: boolean;
+	created_at: string;
+};
+
+type LessonMediaRow = { lesson_id: string; provider: 'youtube'; ref: string };
+
+/** `correct_index` exists in the table but the browser may not read it. */
+type QuizQuestionRow = {
+	id: string;
+	lesson_id: string;
+	position: number;
+	prompt: string;
+	options: string[];
+};
+
+type LessonProgressRow = { learner_id: string; lesson_id: string; completed_at: string };
+
+type QuizAttemptRow = {
+	id: string;
+	learner_id: string;
+	lesson_id: string;
+	score: number;
+	total: number;
+	passed: boolean;
+	created_at: string;
+};
+
+export type QuizResult = { score: number; total: number; passed: boolean; correct: number[] };
+
+type ReadOnly<Row> = { Row: Row; Insert: never; Update: never; Relationships: [] };
+
 export type Database = {
 	public: {
 		Tables: {
@@ -74,6 +123,13 @@ export type Database = {
 				Update: never;
 				Relationships: [];
 			};
+			levels: ReadOnly<LevelRow>;
+			lessons: ReadOnly<LessonRow>;
+			lesson_media: ReadOnly<LessonMediaRow>;
+			quiz_questions: ReadOnly<QuizQuestionRow>;
+			/** Written only by `complete_lesson` and `submit_quiz`. */
+			lesson_progress: ReadOnly<LessonProgressRow>;
+			quiz_attempts: ReadOnly<QuizAttemptRow>;
 		};
 		Views: { [_ in never]: never };
 		Functions: {
@@ -88,9 +144,18 @@ export type Database = {
 				};
 				Returns: LearnerRow;
 			};
+			complete_lesson: {
+				Args: { p_learner: string; p_lesson: string };
+				Returns: undefined;
+			};
+			submit_quiz: {
+				Args: { p_learner: string; p_lesson: string; p_answers: number[] };
+				Returns: QuizResult;
+			};
 		};
 		Enums: {
 			user_role: UserRole;
+			plan_id: PlanId;
 		};
 		CompositeTypes: { [_ in never]: never };
 	};

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
+	import { courses } from '#lib/courses/store.svelte.js';
 	import { learners } from '#lib/learners/store.svelte.js';
 	import { m } from '#lib/paraglide/messages.js';
 	import Notice from '#lib/ui/Notice.svelte';
@@ -12,6 +13,11 @@
 
 	$effect(() => {
 		void learners.load();
+	});
+
+	// Lessons and progress belong to whoever is learning right now.
+	$effect(() => {
+		if (learners.active) void courses.load(learners.active.id);
 	});
 
 	// The learning area always needs to know who is learning.

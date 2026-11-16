@@ -20,20 +20,20 @@ subscriptions that renew by themselves are under Advanced.
 
 ### Must have (launch)
 
-| Feature                                                   | Milestone | State                             |
-| --------------------------------------------------------- | --------- | --------------------------------- |
-| Home page: ustazah, syllabus, plans                       | M0        | Done (draft text)                 |
-| Sign-in with Google or email link                         | M0        | Done, needs your Supabase project |
-| Family account with learner profiles, guardian consent    | M0        | Done                              |
-| Installable app (PWA), offline page                       | M0        | Done                              |
-| Levels and lessons from the database, video player        | M1        | Next                              |
-| Progress per learner, continue where you stopped          | M1        |                                   |
-| Quiz at the end of a lesson                               | M1        |                                   |
-| Admin: add levels, lessons, videos                        | M1        |                                   |
-| Plan gates: Percuma, Asas, Penuh enforced in the database | M2        |                                   |
-| FPX payment, receipts, pass expiry and reminders          | M2        |                                   |
-| Tasmik: record, upload, ustazah review and feedback       | M3        |                                   |
-| Privacy notice reviewed, data export and delete           | M5        | Draft notice only                 |
+| Feature                                                   | Milestone | State                                                     |
+| --------------------------------------------------------- | --------- | --------------------------------------------------------- |
+| Home page: ustazah, syllabus, plans                       | M0        | Done (draft text)                                         |
+| Sign-in with Google or email link                         | M0        | Done, needs your Supabase project                         |
+| Family account with learner profiles, guardian consent    | M0        | Done                                                      |
+| Installable app (PWA), offline page                       | M0        | Done                                                      |
+| Levels and lessons from the database, video player        | M1        | Done                                                      |
+| Progress per learner, continue where you stopped          | M1        | Done (per lesson, not per second of video)                |
+| Quiz at the end of a lesson                               | M1        | Done                                                      |
+| Admin: add levels, lessons, videos                        | M1        | Supabase Table Editor for now; screens are next           |
+| Plan gates: Percuma, Asas, Penuh enforced in the database | M2        | Gate is live; everyone is on Percuma until payment exists |
+| FPX payment, receipts, pass expiry and reminders          | M2        |                                                           |
+| Tasmik: record, upload, ustazah review and feedback       | M3        |                                                           |
+| Privacy notice reviewed, data export and delete           | M5        | Draft notice only                                         |
 
 ### Nice to have (soon after launch)
 

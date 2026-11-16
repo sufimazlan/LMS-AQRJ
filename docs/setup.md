@@ -5,8 +5,9 @@ You do these steps in your own accounts. Nobody else needs your passwords.
 ## 1. Supabase (database and sign-in)
 
 1. Create a project at supabase.com. Region: **Southeast Asia (Singapore)**.
-2. SQL Editor: paste and run `supabase/migrations/20261116000000_foundations.sql`.
+2. SQL Editor: paste and run each file in `supabase/migrations/`, oldest first.
    (Or with the CLI: `npx supabase link` then `npx supabase db push`.)
+   Then run `supabase/seed.sql` once to load the draft syllabus.
 3. Project Settings, API Keys: copy the **Project URL** and the **publishable key**.
    The publishable key is safe in the browser. Never use the secret key in this app's browser code.
 4. Authentication, URL Configuration:
@@ -39,3 +40,27 @@ Copy `.env.example` to `.env`, fill in the two values, run `npm run dev`.
 Export your logo to `static/icons/`: `icon.svg`, `icon-192.png`, `icon-512.png`,
 `icon-maskable-512.png` (logo inside the middle 80%, no transparent corners) and
 `apple-touch-icon.png` (180 px). Update `src/lib/ui/Logo.svelte` to match.
+
+## Adding lessons and videos
+
+Until the admin screens are built, content is edited in the Supabase Table Editor.
+
+- **A video:** upload it to YouTube as Unlisted. Copy the 11-character ID from its
+  address (`youtu.be/<ID>`). In `lesson_media`, insert a row: the lesson's `id`,
+  provider `youtube`, and the ID as `ref`.
+- **A lesson or level:** add a row in `lessons` or `levels` and tick `published`.
+  `plan` on a level decides who may open it: `percuma`, `asas` or `penuh`.
+- **A quiz:** add rows in `quiz_questions`. `options` is a list such as
+  `["Alif", "Ba", "Ta"]` and `correct_index` counts from 0. A lesson with a quiz
+  is completed by scoring 80% or more.
+
+The home page syllabus is separate: it comes from `src/lib/content/site.ts`.
+
+## Making yourself an admin
+
+Sign in to the app once. Then in the SQL Editor run, with your own e-mail address:
+
+```sql
+insert into public.user_roles (account_id, role)
+select id, 'admin' from auth.users where email = 'you@example.com';
+```
