@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 	import Check from '@lucide/svelte/icons/check';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import Lock from '@lucide/svelte/icons/lock';
@@ -8,6 +8,11 @@
 	import Logo from '#lib/ui/Logo.svelte';
 
 	const signIn = resolve('/(app)/masuk');
+
+	// The classroom video at the top. See scripts/hero-video/README.md.
+	const video = resolve('/api/video/kelas');
+	const poster = asset('media/kelas.webp');
+	const videoLabel = 'Ilustrasi 3D: seorang ustazah mengajar sepuluh pelajar di dalam kelas';
 
 	const planName = (id: PlanId) => PLANS.find((plan) => plan.id === id)?.name ?? id;
 
@@ -21,10 +26,39 @@
 <svelte:head>
 	<title>{m.landing_page_title()}</title>
 	<meta name="description" content={m.landing_page_description()} />
+	<!-- The still picture is the first big thing on the page, so fetch it early. -->
+	<link rel="preload" as="image" href={poster} fetchpriority="high" />
 </svelte:head>
 
 <!-- Hero -->
-<section class="mx-auto w-full max-w-5xl px-4 pt-8 pb-12 sm:pt-14">
+<section class="mx-auto w-full max-w-5xl px-4 pt-2 pb-12">
+	<!-- A short, silent, looping 3D illustration. It plays without JavaScript.
+	     People who ask their device for less motion get the still picture. -->
+	<div class="mb-8 aspect-video w-full overflow-hidden rounded-3xl bg-sand-100">
+		<video
+			class="size-full object-cover motion-reduce:hidden"
+			autoplay
+			muted
+			loop
+			playsinline
+			disablepictureinpicture
+			disableremoteplayback
+			preload="metadata"
+			{poster}
+			width="960"
+			height="540"
+			aria-label={videoLabel}
+		>
+			<source src={video} type="video/mp4" />
+		</video>
+		<img
+			class="hidden size-full object-cover motion-reduce:block"
+			src={poster}
+			alt={videoLabel}
+			width="960"
+			height="540"
+		/>
+	</div>
 	<p
 		class="inline-block rounded-full border border-sand-200 bg-sand-100 px-3 py-1 text-sm text-ink-soft"
 	>

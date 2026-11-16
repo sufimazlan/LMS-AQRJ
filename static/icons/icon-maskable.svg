@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-	<!-- Source for icon-maskable-512.png and apple-touch-icon.png: no rounded corners, mark inside the safe zone. -->
-	<rect width="64" height="64" fill="#1f5539" />
-	<path d="M32 24c-5-4-12-5-18-4v24c6-1 13 0 18 4 5-4 12-5 18-4V20c-6-1-13 0-18 4z" fill="#fbf8f1" />
-	<path d="M32 24v24" stroke="#1f5539" stroke-width="2" />
-	<circle cx="32" cy="13" r="3" fill="#d4a942" />
-</svg>

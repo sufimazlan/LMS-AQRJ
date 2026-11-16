@@ -22,7 +22,7 @@ subscriptions that renew by themselves are under Advanced.
 
 | Feature                                                   | Milestone | State                                                     |
 | --------------------------------------------------------- | --------- | --------------------------------------------------------- |
-| Home page: ustazah, syllabus, plans                       | M0        | Done (draft text)                                         |
+| Home page: ustazah, syllabus, plans                       | M0        | Done, with 3D classroom video (syllabus text still draft) |
 | Sign-in with Google or email link                         | M0        | Done, needs your Supabase project                         |
 | Family account with learner profiles, guardian consent    | M0        | Done                                                      |
 | Installable app (PWA), offline page                       | M0        | Done                                                      |
