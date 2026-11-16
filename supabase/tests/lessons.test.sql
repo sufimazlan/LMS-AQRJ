@@ -11,6 +11,9 @@ insert into public.learners (id, account_id, display_name) values
 	('10000000-0000-0000-0000-00000000000a', '00000000-0000-0000-0000-00000000000a', 'Aminah'),
 	('10000000-0000-0000-0000-00000000000b', '00000000-0000-0000-0000-00000000000b', 'Bakar');
 
+-- Start from no content: seed.sql may have run. This is undone by the rollback at the end.
+delete from public.levels;
+
 insert into public.levels (id, number, title, plan, published) values
 	('20000000-0000-0000-0000-000000000001', 1, 'Percuma', 'percuma', true),
 	('20000000-0000-0000-0000-000000000002', 2, 'Berbayar', 'asas', true),
