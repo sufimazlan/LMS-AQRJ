@@ -1,0 +1,8 @@
+# Applied by Cloudflare to static files and prerendered pages.
+# Dynamic responses get the same headers in src/hooks.server.ts.
+# The build adds the cache rules for /_app (hashed files are cached for a year).
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), geolocation=(), microphone=(self)

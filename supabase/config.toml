@@ -1,0 +1,10 @@
+# Local Supabase for development and for the database tests in CI.
+# Start with: npx supabase start     Test with: npx supabase test db
+project_id = "aqrj-lms"
+
+[api]
+schemas = ["public"]
+
+[auth]
+site_url = "http://localhost:5173"
+additional_redirect_urls = ["http://localhost:5173/masuk/selesai", "http://localhost:4173/masuk/selesai"]

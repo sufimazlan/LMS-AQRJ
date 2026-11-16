@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens. Change the look of the whole app here.
+ * Latin text uses the system font, which costs nothing to download.
+ */
+@theme {
+	--font-sans:
+		ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+		'Noto Sans', sans-serif;
+
+	--color-brand-50: #eef7f1;
+	--color-brand-100: #d7ecdd;
+	--color-brand-200: #b0d9bd;
+	--color-brand-300: #81bf97;
+	--color-brand-400: #53a073;
+	--color-brand-500: #358457;
+	--color-brand-600: #266a45;
+	--color-brand-700: #1f5539;
+	--color-brand-800: #1b442f;
+	--color-brand-900: #163828;
+
+	--color-sand-50: #fbf8f1;
+	--color-sand-100: #f5efe0;
+	--color-sand-200: #eadfc4;
+	--color-sand-300: #d9c79b;
+
+	--color-gold-400: #d4a942;
+	--color-gold-600: #94701b;
+
+	--color-ink: #1c2420;
+	--color-ink-soft: #4a5750;
+}
+
+@layer base {
+	html {
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		@apply min-h-dvh bg-sand-50 font-sans text-ink antialiased;
+	}
+
+	:focus-visible {
+		@apply outline-2 outline-offset-2 outline-brand-600;
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+}
+
+@layer components {
+	/* Controls are at least 48px tall so they are easy to tap. */
+	.btn {
+		@apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 text-base font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+	}
+
+	.btn-primary {
+		@apply bg-brand-700 text-white hover:bg-brand-800;
+	}
+
+	.btn-secondary {
+		@apply border border-brand-700 bg-white text-brand-800 hover:bg-brand-50;
+	}
+
+	.btn-quiet {
+		@apply text-brand-800 hover:bg-brand-50;
+	}
+
+	.card {
+		@apply rounded-2xl border border-sand-200 bg-white p-5 shadow-sm;
+	}
+
+	.field {
+		@apply block min-h-12 w-full rounded-xl border border-sand-300 bg-white px-4 text-base text-ink;
+	}
+
+	.label {
+		@apply mb-1.5 block text-sm font-semibold text-ink;
+	}
+
+	.hint {
+		@apply mt-1 text-sm text-ink-soft;
+	}
+
+	.error-text {
+		@apply mt-1 text-sm font-medium text-red-700;
+	}
+}

@@ -1,0 +1,5 @@
+# The site is in pilot. Search engines are asked to stay away until launch.
+# At launch: allow "/", keep the app area and /api disallowed,
+# and remove the "noindex" meta tag in src/app.html.
+User-agent: *
+Disallow: /
