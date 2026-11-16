@@ -1,0 +1,26 @@
+{
+	"id": "/belajar",
+	"name": "AQRJ: Akademi Quran Raudhatul Jannah",
+	"short_name": "AQRJ",
+	"description": "Kelas mengaji Al-Quran dalam talian: video pelajaran, kuiz dan semakan bacaan oleh guru.",
+	"lang": "ms",
+	"dir": "ltr",
+	"start_url": "/belajar",
+	"scope": "/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#fbf8f1",
+	"theme_color": "#1f5539",
+	"categories": ["education"],
+	"icons": [
+		{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+		{ "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+		{
+			"src": "/icons/icon-maskable-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{ "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+	]
+}
