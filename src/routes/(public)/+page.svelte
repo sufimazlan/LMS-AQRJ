@@ -10,7 +10,10 @@
 	const signIn = resolve('/(app)/masuk');
 
 	// The classroom video at the top. See scripts/hero-video/README.md.
-	const video = resolve('/api/video/kelas');
+	const video = resolve('/api/video/[name]', { name: 'kelas' });
+	const videoAv1 = resolve('/api/video/[name]', { name: 'kelas-av1' });
+	const av1Type = 'video/mp4; codecs="av01.0.04M.08"';
+	const h264Type = 'video/mp4; codecs="avc1.640028"';
 	const poster = asset('media/kelas.webp');
 	const videoLabel = 'Ilustrasi 3D: seorang ustazah mengajar sepuluh pelajar di dalam kelas';
 
@@ -33,8 +36,9 @@
 <!-- Hero -->
 <section class="mx-auto w-full max-w-5xl px-4 pt-2 pb-12">
 	<!-- A short, silent, looping 3D illustration. It plays without JavaScript.
-	     People who ask their device for less motion get the still picture. -->
-	<div class="mb-8 aspect-video w-full overflow-hidden rounded-3xl bg-sand-100">
+	     People who ask their device for less motion get the still picture.
+	     Phones get a taller crop of the same file, so the people stay large. -->
+	<div class="mb-8 aspect-[4/3] w-full overflow-hidden rounded-3xl bg-sand-100 sm:aspect-video">
 		<video
 			class="size-full object-cover motion-reduce:hidden"
 			autoplay
@@ -49,7 +53,9 @@
 			height="540"
 			aria-label={videoLabel}
 		>
-			<source src={video} type="video/mp4" />
+			<!-- The browser takes the first one it can play. -->
+			<source src={videoAv1} type={av1Type} />
+			<source src={video} type={h264Type} />
 		</video>
 		<img
 			class="hidden size-full object-cover motion-reduce:block"
