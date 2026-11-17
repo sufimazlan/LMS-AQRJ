@@ -1,7 +1,7 @@
 // The words and numbers shown on the home page and in the syllabus list.
 // AQRJ staff can change this file without touching any page code.
 //
-// Everything marked DRAF is a placeholder for AQRJ to confirm or replace.
+// The syllabus is marked DRAF: a placeholder for AQRJ to confirm or replace.
 // Text here is in Bahasa Melayu because the public pages are BM only.
 
 /** What a learner needs to open a level. Each plan includes the ones before it. */
@@ -113,18 +113,18 @@ export const SYLLABUS: readonly SyllabusLevel[] = [
 	}
 ];
 
-// DRAF: gantikan dengan butiran sebenar ustazah sebelum pelancaran.
-// Letak gambar di static/images/ dan isi `photo`, contohnya '/images/ustazah.webp'.
+// The ustazah shown on the home page. The photo is static/images/ustazah.webp.
 export const TEACHER = {
-	name: 'Ustazah AQRJ',
-	role: 'Pengasas dan guru utama, Akademi Quran Raudhatul Jannah',
-	photo: null as string | null,
+	name: 'Ustazah Noorhayati bt Muhd Yasin',
+	role: 'Akademi Quran Raudhatul Jannah',
+	photo: '/images/ustazah.webp' as string | null,
 	intro:
-		'Profil ustazah akan dikemas kini di sini: latar belakang pengajian, pengalaman mengajar dan pendekatan beliau di dalam kelas.',
+		'Lebih 40 tahun pengalaman mengajar Al-Quran, dengan kepakaran dalam Tajwid, Tarannum dan bidang yang berkaitan.',
 	points: [
-		'Kelas untuk semua peringkat umur, daripada kanak-kanak hingga dewasa',
-		'Pelajar muslimat disemak oleh ustazah',
-		'Belajar ikut kadar sendiri, dengan bimbingan guru'
+		'Lebih 40 tahun pengalaman mengajar',
+		'Pakar Tajwid dan Tarannum',
+		'Bertauliah profesional daripada Al Baghdadi Learning Centre',
+		'Mengajar semua peringkat umur, daripada kanak-kanak hingga dewasa'
 	]
 };
 

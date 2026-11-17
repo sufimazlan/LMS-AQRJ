@@ -35,11 +35,14 @@ You do these steps in your own accounts. Nobody else needs your passwords.
 
 Copy `.env.example` to `.env`, fill in the two values, run `npm run dev`.
 
-## Replacing the icons
+## Replacing the logo or the ustazah photo
 
-Export your logo to `static/icons/`: `icon.svg`, `icon-192.png`, `icon-512.png`,
-`icon-maskable-512.png` (logo inside the middle 80%, no transparent corners) and
-`apple-touch-icon.png` (180 px). Update `src/lib/ui/Logo.svelte` to match.
+- Logo: `static/icons/logo.webp` (192 px, clear background) is shown in the page header.
+  The app icons beside it are the same emblem on white: `icon-192.png`, `icon-512.png`,
+  `icon-maskable-512.png` (emblem inside the middle 60%) and `apple-touch-icon.png` (180 px).
+- Ustazah photo: `static/images/ustazah.webp`, square, about 450 px. Her name and
+  details are in `src/lib/content/site.ts`.
+- Home page video: see `scripts/hero-video/README.md`.
 
 ## Adding lessons and videos
 

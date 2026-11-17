@@ -23,7 +23,10 @@ function toPathname(path: string): string {
 }
 
 // Files with a content hash in their name, plus everything in /static.
-const buildFiles = [...immutable, ...assets].map((file) => toPathname(file.path));
+// Video is left out: it is streamed when watched, and too big to copy up front.
+const buildFiles = [...immutable, ...assets]
+	.filter((file) => !/\.(mp4|webm)$/.test(file.path))
+	.map((file) => toPathname(file.path));
 const buildFileSet = new Set(buildFiles);
 
 // Public pages and the empty shells of the app pages.

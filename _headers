@@ -6,3 +6,8 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), geolocation=(), microphone=(self)
+
+# The home page video and its still picture. Not hashed, so cached for a day only.
+/media/*
+  ! Cache-Control
+  Cache-Control: public, max-age=86400

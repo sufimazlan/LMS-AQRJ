@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import { asset, resolve } from '$app/paths';
 	import Check from '@lucide/svelte/icons/check';
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import Lock from '@lucide/svelte/icons/lock';
@@ -8,6 +8,14 @@
 	import Logo from '#lib/ui/Logo.svelte';
 
 	const signIn = resolve('/(app)/masuk');
+
+	// The classroom video at the top. See scripts/hero-video/README.md.
+	const video = resolve('/api/video/[name]', { name: 'kelas' });
+	const videoAv1 = resolve('/api/video/[name]', { name: 'kelas-av1' });
+	const av1Type = 'video/mp4; codecs="av01.0.04M.08"';
+	const h264Type = 'video/mp4; codecs="avc1.640028"';
+	const poster = asset('media/kelas.webp');
+	const videoLabel = 'Ilustrasi 3D: seorang ustazah mengajar sepuluh pelajar di dalam kelas';
 
 	const planName = (id: PlanId) => PLANS.find((plan) => plan.id === id)?.name ?? id;
 
@@ -21,10 +29,42 @@
 <svelte:head>
 	<title>{m.landing_page_title()}</title>
 	<meta name="description" content={m.landing_page_description()} />
+	<!-- The still picture is the first big thing on the page, so fetch it early. -->
+	<link rel="preload" as="image" href={poster} fetchpriority="high" />
 </svelte:head>
 
 <!-- Hero -->
-<section class="mx-auto w-full max-w-5xl px-4 pt-8 pb-12 sm:pt-14">
+<section class="mx-auto w-full max-w-5xl px-4 pt-2 pb-12">
+	<!-- A short, silent, looping 3D illustration. It plays without JavaScript.
+	     People who ask their device for less motion get the still picture.
+	     Phones get a taller crop of the same file, so the people stay large. -->
+	<div class="mb-8 aspect-[4/3] w-full overflow-hidden rounded-3xl bg-sand-100 sm:aspect-video">
+		<video
+			class="size-full object-cover motion-reduce:hidden"
+			autoplay
+			muted
+			loop
+			playsinline
+			disablepictureinpicture
+			disableremoteplayback
+			preload="metadata"
+			{poster}
+			width="960"
+			height="540"
+			aria-label={videoLabel}
+		>
+			<!-- The browser takes the first one it can play. -->
+			<source src={videoAv1} type={av1Type} />
+			<source src={video} type={h264Type} />
+		</video>
+		<img
+			class="hidden size-full object-cover motion-reduce:block"
+			src={poster}
+			alt={videoLabel}
+			width="960"
+			height="540"
+		/>
+	</div>
 	<p
 		class="inline-block rounded-full border border-sand-200 bg-sand-100 px-3 py-1 text-sm text-ink-soft"
 	>

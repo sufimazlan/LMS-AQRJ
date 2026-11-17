@@ -46,7 +46,7 @@ Without the Supabase values the app still runs; the sign-in page says it is not 
 
 ## Before going public
 
-- Replace the DRAF text in `src/lib/content/site.ts` and the placeholder logo in `static/icons`.
+- Confirm or replace the draft syllabus (marked DRAF) in `src/lib/content/site.ts`.
 - Have the privacy notice reviewed, then bump `PRIVACY_NOTICE_VERSION` in `src/lib/config.ts`.
 - Allow search engines: edit `static/robots.txt` and remove `noindex` from `src/app.html`.
 
